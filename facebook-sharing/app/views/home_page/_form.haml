@@ -1,0 +1,97 @@
+-# Support Facebook style status sharing.
+:css
+  #atc_bar{width:500px;}
+  #attach_content{border:1px solid #ccc;padding:10px;margin-top:10px;}
+  #atc_images {width:100px;height:120px;overflow:hidden;float:left;}
+  #atc_info {width:350px;float:left;height:100px;text-align:left; padding:10px;}
+  #atc_title {font-size:14px;display:block;}
+  #atc_url {font-size:10px;display:block;}
+  #atc_desc {font-size:12px;}
+  #atc_total_image_nav{float:left;padding-left:20px}
+  #atc_total_images_info{float:left;padding:4px 10px;font-size:12px;}
+
+= form_tag "resources", :method => "post" do
+  -# Test Sharing Status
+  %div{:class => "well span10", :id=>"search_form"}
+    %ul{:id => "tab", :class => "nav nav-tabs"}
+      %li{:id => "real_share_resource_status", :class => "active"}
+        %a{:href => "#status", "data-toggle" => "tab"}
+          %b
+            Status
+      %li{:id => "real_share_resource_link"}
+        %a{:href => "#link", "data-toggle" => "tab"}
+          %b
+            Link
+      %li{:id => "real_share_resource_video"}
+        %a{:href => "#video", "data-toggle" => "tab"}
+          %b
+            Video
+      %li{:id => "real_share_resource_book"}
+        %a{:href => "#book", "data-toggle" => "tab"}
+          %b
+            Book
+
+    = text_field_tag "resource[title]", "", :name=>"add_resource_field", :class=>"span6", :style=>"margin: 0 auto;height: 30px", "placeholder"=>"Add something...", :id=>"add_resource_field"
+    %button{:class => "btn btn-small btn-toolbar", :id => "real_clear_input", :style => "display: none;margin: 0 auto;height: 30px"}
+      X
+    = hidden_field_tag "resource[user_id]", 'fake_id'
+    = hidden_field_tag "resource[uri]", '', :id=>'resource_uri'
+    = hidden_field_tag "resource[title]", '', :id=>'resource_url_title'
+    = hidden_field_tag "resource[description]", '', :id=>'resource_description'
+    = hidden_field_tag "resource[image_uri]", '', :id=>'resource_image_uri'
+    = hidden_field_tag "resource[type_id]", '', :id=>'resource_type_id'
+
+    %button{:class => "btn btn-large btn-primary ", :id => "search_resource"}
+      Search
+    %br
+    %div{:style => "display:none", :id => "search_format_error"}
+      %br
+      %br
+      %div{:class => "alert"}
+        %strong
+          Sorry!
+        Wrong format, link format should be "http://www.realthematics.com"
+    %div{:style => "display:none", :id => "search_connection_error"}
+      %br
+      %br
+      %div{:class => "alert"}
+        %strong
+          Sorry!
+        We can't get response from the site you specified. Please check your Internet connection!
+    %div{:style => "display:none", :id => "search_book_error"}
+      %br
+      %br
+      %div{:class => "alert"}
+        %strong
+          Sorry!
+        But something wrong with your book name, please check it again!
+
+    %div{:class => "span8"}
+      %input{:type => "hidden", :name => "cur_image", :id => "cur_image"}
+      %div{:id => "loader"}
+        %div{:align => "center", :id => "atc_loading", :style => "display:none"}
+          %img{:src => "/assets/load.gif", :alt => "Loading"}
+        %div{:id =>"attach_content", :style => "display:none"}
+          %div{:id => "atc_images"}
+          %div{:id => "atc_info"}
+            %label{:id => "atc_title"}
+            %a{:id => "atc_url", :href => ""}
+            %br{:clear => "all"}
+            %label{:id => "atc_desc"}
+            %br{:clear => "all"}
+          %div{:id => "atc_total_image_nav"}
+            %a{:href => "#", :id => "prev"}
+              %img{:src => "/assets/prev.png", :alt => "Prev", :border => "0"}
+            %a{:href => "#", :id => "next"}
+              %img{:src => "/assets/next.png", :alt => "Next", :border => "0"}
+          %div{:id => "atc_total_images_info"}
+            %span{:id => "cur_image_num"}
+              1
+            of
+            %span{:id => "atc_total_images"}
+              1
+          %br{:clear => "all"}
+  %br{:clear => "all"}
+
+%script{:type => "text/javascript", :src => "/javascript/real-websharing.js", :charset => "utf-8"}
+

@@ -1,0 +1,10 @@
+%link{:rel => "stylesheet", :href => "/css/styles.css"}
+
+.notice_alert
+  - if notice
+    %p{:id=>"notice", :class=>"span5 alert alert-success"}
+      = notice
+      %a{:class=>"close", "data-dismiss"=>"alert"}
+        ×
+
+= render 'form'
