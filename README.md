@@ -8,6 +8,12 @@ Now I'm using Twitter's BootStrap.
 
 Usage
 =============================
+
+cd /path-of-yours/facebook-sharing/facebook-sharing
+bundle install
+rails server
+
+Then you get everything.
 It's quite straight forward, but still need to be polished.
 
 If you want to use the Amazon search feature, you have to put your Amazon Keys in 
