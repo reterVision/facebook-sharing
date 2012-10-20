@@ -8,6 +8,10 @@ class HomePageController < ApplicationController
 	def index
   end
 
+  def succeed
+    redirect_to :back, :notice => "Succeed!"
+  end
+
   def search_book
     Amazon::Ecs.configure do |options|
       options[:associate_tag] = 'Your_Associate_Tag'

@@ -35,29 +35,32 @@ $(document).ready(function(){
 
         $('#submit_resource').show();
         $('#search_resource').hide();
+        $('#search_result_preview').hide();
         hideError();
     });
 
     $('#real_share_resource_link').bind("click", function(e) {
 
         resource_type = "link";
+        $('#search_result_preview').hide();
         resetShowHide();
     });
 
     $('#real_share_resource_video').bind("click", function(e) {
 
         resource_type = "video";
+        $('#search_result_preview').hide();
         resetShowHide();
     });
 
     $('#real_share_resource_book').bind("click", function(e) {
 
         resource_type = "book";
+        $('#search_result_preview').hide();
         resetShowHide();
     });
 
     $('#search_resource').bind("click", function(e) {
-
         parse_link();
         if(is_resource_returned) {
             $('#search_resource').hide();
@@ -76,6 +79,9 @@ $(document).ready(function(){
             resetShowHide();
         }
 
+        // Modify CSS span of text field.
+        $('#add_resource_field').attr('class', 'span9')
+
         return false;
     }
 
@@ -83,6 +89,7 @@ $(document).ready(function(){
     $('#add_resource_field').bind("paste", parse_link);
     function parse_link ()
     {
+        $('#search_result_preview').show();
         hideError();
 
         // Not necessary for status to search web.
@@ -211,6 +218,9 @@ $(document).ready(function(){
                         $('#submit_resource').removeAttr("disabled");
                         $('#search_resource').removeAttr("disabled");
 
+                        // Modify CSS span of text field.
+                        $('#add_resource_field').attr('class', 'span8')
+
                         $('#submit_resource').show();
                         $('#search_resource').hide();
                     },
@@ -321,6 +331,9 @@ $(document).ready(function(){
                             $('#add_resource_field').attr("disabled", "disabled");
                             $('#submit_resource').removeAttr("disabled");
                             $('#search_resource').removeAttr("disabled");
+
+                            // Modify CSS span of text field.
+                            $('#add_resource_field').attr('class', 'span8')
 
                             $('#submit_resource').show();
                             $('#search_resource').hide();

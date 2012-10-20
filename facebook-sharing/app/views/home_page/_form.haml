@@ -10,7 +10,7 @@
   #atc_total_image_nav{float:left;padding-left:20px}
   #atc_total_images_info{float:left;padding:4px 10px;font-size:12px;}
 
-= form_tag "resources", :method => "post" do
+= form_tag "home_page", :method => "post" do
   -# Test Sharing Status
   %div{:class => "well span10", :id=>"search_form"}
     %ul{:id => "tab", :class => "nav nav-tabs"}
@@ -31,7 +31,7 @@
           %b
             Book
 
-    = text_field_tag "resource[title]", "", :name=>"add_resource_field", :class=>"span6", :style=>"margin: 0 auto;height: 30px", "placeholder"=>"Add something...", :id=>"add_resource_field"
+    = text_field_tag "resource[title]", "", :name=>"add_resource_field", :class=>"span9", :style=>"margin: 0 auto;height: 30px", "placeholder"=>"Add something...", :id=>"add_resource_field"
     %button{:class => "btn btn-small btn-toolbar", :id => "real_clear_input", :style => "display: none;margin: 0 auto;height: 30px"}
       X
     = hidden_field_tag "resource[user_id]", 'fake_id'
@@ -41,8 +41,10 @@
     = hidden_field_tag "resource[image_uri]", '', :id=>'resource_image_uri'
     = hidden_field_tag "resource[type_id]", '', :id=>'resource_type_id'
 
-    %button{:class => "btn btn-large btn-primary ", :id => "search_resource"}
+    %button{:class => "btn btn-large btn-primary ", :id => "search_resource", :style => "display:none"}
       Search
+    %button{:class => "btn btn-large btn-primary", :id => "submit_resource", :onclick => "return checkKeyword();"}
+      Share
     %br
     %div{:style => "display:none", :id => "search_format_error"}
       %br
@@ -66,7 +68,8 @@
           Sorry!
         But something wrong with your book name, please check it again!
 
-    %div{:class => "span8"}
+    %hr
+    %div{:class => "span8", :id => "search_result_preview"}
       %input{:type => "hidden", :name => "cur_image", :id => "cur_image"}
       %div{:id => "loader"}
         %div{:align => "center", :id => "atc_loading", :style => "display:none"}

@@ -2,11 +2,23 @@
 %html
   %head
     = javascript_include_tag 'application'
+    %link{:rel => "stylesheet", :href => "/css/kube.css"}
     %link{:rel => "stylesheet", :href => "/css/bootstrap.css"}
     %link{:rel => "stylesheet", :href => "/css/bootstrap-responsive.css"}
-    %script{:type => "text/javascript", :src => "/javascript/bootstrap-tab.js", :charset => "utf-8"}
+    %link{:href => "http://fonts.googleapis.com/css?family=Oswald:400,700", :rel => "stylesheet", :type => "text/css"}
+    %link{:rel => "stylesheet", :href => "/css/demo.css"}
 
+    %script{:type => "text/javascript", :src => "/javascript/bootstrap-tab.js", :charset => "utf-8"}
+    %script{:type => "text/javascript", :src => "/javascript/bootstrap-alert.js", :charset => "urtf-8"}
+
+    -# If lt IE 9
+    %script{:src => "http://html5shiv.googlecode.com/svn/trunk/html5.js"}
   %body
+    %div{:class => "wrapper"}
+      %header{:id => "header", :class => "group"}
+        %h1
+          Facebook Style Sharing
+      %hr
     -# Generate HTML here.
     .container-fluid
       .row-fluid
