@@ -4,18 +4,17 @@ A facebook style status sharing based on JQuery and Ruby on Rails.
 
 CSS
 =============================
-Now I'm using Twitter's BootStrap.
+Now I'm using Twitter's Bootstrap.
 
 Usage
 =============================
 
-cd /path-of-yours/facebook-sharing/facebook-sharing
-bundle install
-rails server
-
-Then you get everything.
-It's quite straight forward, but still need to be polished.
-
+- <p>cd /path-of-yours/facebook-sharing/facebook-sharing</p>
+- <p>bundle install</p>
+- <p>rails server</p>
+<br />
+Then you get everything. <br />
+It's quite straight forward, but still need to be polished. <br />
 If you want to use the Amazon search feature, you have to put your Amazon Keys in 
 home_page_controller.rb.
 
